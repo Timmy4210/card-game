@@ -38,6 +38,41 @@ $(document).ready(function(){
         cardDeck.orderBySuit();
         cardDeck.spread(); // update card table
     }
+     var hand = [];
+    var showError = function(msg){
+        $('#error').html(msg).show();
+        setTimeout(function(){
+            $('#error').fadeOut('slow');
+        },3000);
+    }
+    var showHand = function(){
+        var el = $('#Homas')
+        el.html('');
+        for(var i=0;i<hand.length;i++){
+            el.append(hand[i].getHTML());
+        }
+    }
+    var doShuffle = function(){
+        cardDeck.shuffle();
+        cardDeck.spread(); // update card table
+    }
+    var doDrawCard = function(){
+        var c = cardDeck.draw();
+        if(!c){
+            showError('no more cards');
+            return;
+        }
+        hand[hand.length] = c;
+        cardDeck.spread();
+        showHand();
+    }
+    var doOrderByRank = function(){
+        cardDeck.orderByRank();
+        cardDeck.spread(); // update card table
+    }
+    var doOrderBySuit = function(){
+        cardDeck.orderBySuit();
+        cardDeck.spread(); // update card table
     $('#shuffler').click(doShuffle);
     $('#draw').click(doDrawCard);
     $('#shuffleDraw').click(function(){
