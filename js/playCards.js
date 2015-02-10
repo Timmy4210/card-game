@@ -3,6 +3,7 @@ $(document).ready(function(){
     cardDeck.spread(); // show it
 
     var hand = [];
+     var hand1 = [];
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
@@ -14,6 +15,11 @@ $(document).ready(function(){
         el.html('');
         for(var i=0;i<hand.length;i++){
             el.append(hand[i].getHTML());
+        }
+         el = $('#compHand')
+        el.html('');
+        for(var i=0;i<hand1.length;i++){
+            el.append(hand1[i].getHTML());
         }
     }
     var doShuffle = function(){
@@ -30,6 +36,16 @@ $(document).ready(function(){
         cardDeck.spread();
         showHand();
     }
+     var doDrawCard1 = function(){
+        var c = cardDeck.draw();
+        if(!c){
+            showError('no more cards');
+            return;
+        }
+        hand1[hand1.length] = c;
+        cardDeck.spread();
+        showHand();
+    }
     var doOrderByRank = function(){
         cardDeck.orderByRank();
         cardDeck.spread(); // update card table
@@ -40,6 +56,7 @@ $(document).ready(function(){
     }
     $('#shuffler').click(doShuffle);
     $('#draw').click(doDrawCard);
+    $('#draw1').click(doDrawCard1);
     $('#shuffleDraw').click(function(){
         doShuffle();
         doDrawCard();
