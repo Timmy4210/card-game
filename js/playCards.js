@@ -11,12 +11,12 @@ $(document).ready(function(){
         },3000);
     }
     var showHand = function(){
-        var el = $('#yourHand')
+        var el = $('#hand')
         el.html('');
         for(var i=0;i<hand.length;i++){
             el.append(hand[i].getHTML());
         }
-         el = $('#compHand')
+         el = $('#hand1')
         el.html('');
         for(var i=0;i<hand1.length;i++){
             el.append(hand1[i].getHTML());
