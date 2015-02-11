@@ -61,6 +61,16 @@ $(document).ready(function(){
         doShuffle();
         doDrawCard();
     });
+       $('#addCard1').click(function(){
+        if(!hand1.length){
+            showError('your hand is empty');
+            return;
+        }
+        var c = hand.pop();
+        showHand();
+        cardDeck.addCard(c);
+        cardDeck.spread();
+    });
     $('#addCard').click(function(){
         if(!hand.length){
             showError('your hand is empty');
