@@ -68,7 +68,7 @@ $(document).ready(function(){
         }
         var c = hand1.pop();
         showHand();
-        cardDeck.addCard(c);
+        cardDeck.addCard1(c);
         cardDeck.spread();
     });
     $('#addCard').click(function(){
