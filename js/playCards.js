@@ -46,6 +46,15 @@ $(document).ready(function(){
         cardDeck.spread();
         showHand();
     }
+    var doDeal = function(){
+    for(var i=0;i<7;i++){
+        doDrawCard1();
+        doDrawCard();
+        cardDeck.spread();
+    }
+    }
+        
+        
     var doOrderByRank = function(){
         cardDeck.orderByRank();
         cardDeck.spread(); // update card table
@@ -54,7 +63,7 @@ $(document).ready(function(){
         cardDeck.orderBySuit();
         cardDeck.spread(); // update card table
     }
-    
+    $('#deal').click(doDeal);
     $('#shuffler').click(doShuffle);
     $('#draw').click(doDrawCard);
     $('#draw1').click(doDrawCard1);
